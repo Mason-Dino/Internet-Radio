@@ -22,6 +22,10 @@ def generate(song):
         while data:
             yield data
             data = f.read()
+            
+@app.route("/song/<song>")
+def song(song):
+    return Response(generate(song), mimetype="audio/mpeg")
 
 if __name__ == "__main__":
     app.run(port=5000, debug=True)
