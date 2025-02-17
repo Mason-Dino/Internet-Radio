@@ -11,6 +11,15 @@ Make sure that python flask is installed on the device.
 sudo apt install python3-flask
 ```
 
+## Get the IP
+To get the IP of the raspberry pi device we need to run a command
+
+```sh
+ifconfig
+```
+
+you should see a segment called `wlan0` and around there you should find a `inet` which will have the ip of the device. 
+
 ## Code Environment
 
 
@@ -53,7 +62,7 @@ def index():
     return "Hello World"
 
 if __name__ == "__main__":
-    app.run("raspberrypi-ip", port=500, debug=True)
+    app.run("raspberrypi-ip", port=5000, debug=True)
 ```
 
 Lets test out what we have right now to make sure that it works
