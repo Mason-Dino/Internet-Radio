@@ -145,3 +145,30 @@ def generate(song):
 def song(song):
     return Response(generate(song), mimetype="audio/mpeg")
 ```
+
+Now it is time for the html part. We need to make another directory
+
+```sh
+mkdir template
+cd template
+```
+
+Make sure that you are in the template directory so we can then make an index.html page
+
+```sh
+nano index.html
+```
+
+We need to get the basic html file outline put out
+
+```html
+<!DOCTYPE html>
+<html>
+    <head>
+
+    </head>
+    <body>
+        
+    </body>
+</html>
+```
