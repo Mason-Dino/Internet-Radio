@@ -31,6 +31,8 @@ We will be using flask as the back end to serve as our little internet server, a
 mkdir music
 ```
 
+Students should get mp3 files in this part and place them in the music directory. 
+
 ```sh
 nano radio.py
 ```
@@ -69,3 +71,56 @@ Lets test out what we have right now to make sure that it works
 
 Head to: `http://raspberrypi-ip:5000/` <br>
 it should return `Hello World`
+
+The next code segments are going to be spread out a little bit in relation to what we have just written. 
+
+This code segments gets all the audio files within the music directory.
+
+```py
+#this is code will go right below playlist = []
+
+for file in os.listdir(MUSIC):
+    if file.endswith(".mp3"):
+        playlist.append(file)
+```
+
+This code segment will make another url endpoint and will return the songs we have in playlist. This is an important step!
+
+```py
+# this segment of code will go under the index function
+
+@app.route("/list")
+def songList():
+    return playlist
+```
+
+You `radio.py` file should look like the following
+
+```py
+from flask import Flask, Response, render_template
+import os
+
+app = Flask(__name__)
+MUSIC = "/home/dsu/Desktop/music"
+playlist = []
+
+for file in os.listdir(MUSIC):
+    if file.endswith(".mp3"):
+        playlist.append(file)
+
+@app.route("/")
+def index():
+    return render_template("index.html")
+
+@app.route("/list")
+def list():
+    return playlist
+
+if __name__ == "__main__":
+    app.run(port=5000, debug=True)
+```
+
+Let check to make sure that this code all works
+
+head to: `http://raspberrypi-ip:5000/list`<br>
+return: `mp3 files you have in music directory`
