@@ -6,6 +6,10 @@ app = Flask(__name__)
 MUSIC = "/home/dsu/Desktop/music"
 playlist = []
 
+for file in os.listdir(MUSIC):
+    if file.endswith(".mp3"):
+        playlist.append(file)
+
 @app.route("/")
 def index():
     return "Hello, World!"
