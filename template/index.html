@@ -7,5 +7,15 @@
         <audio controls autoplay muted id="audioPlayer">
             <source src="/song/Same-Old-Song.mp3" type="audio/mpeg">
         </audio>
+        <script>
+            var audio = document.getElementById("audioPlayer");
+            var songs = [];
+            var index = 0;
+
+            fetch("http://138.247.189.28:5000/list").then(response => response.json()).then(data => {
+                songs = data;
+                console.log(songs); // Now you can use songs here
+            });
+        </script>
     </body>
 </html>
