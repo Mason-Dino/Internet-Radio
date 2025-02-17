@@ -26,6 +26,12 @@ mkdir music
 nano radio.py
 ```
 
+The code below is going to be need. For the first 2 lines we are needing to import the library's that we need to complete this project
+
+app var is going to help initiate the flask environment <br>
+MUSIC var is just the dir for all of the music that we will use<br>
+playlist array is going the array that stores all the music files
+
 ```py
 from flask import Flask, Response, render_template
 import os
@@ -34,3 +40,23 @@ app = Flask(__name__)
 MUSIC = "/home/dsu/Desktop/music"
 playlist = []
 ```
+
+Next we will actually get the flask environment set up so we have a basic web server.
+
+with the `app.route("/")` that is setting the url so when I go to the ip of the raspberry pi it will go to this code segment and then it will return `Hello World`
+
+`Add this to the radio.py file`
+
+```py
+@app.route("/")
+def index():
+    return "Hello World"
+
+if __name__ == "__main__":
+    app.run("raspberrypi-ip", port=500, debug=True)
+```
+
+Lets test out what we have right now to make sure that it works
+
+Head to: `http://raspberrypi-ip:5000/` <br>
+it should return `Hello World`
