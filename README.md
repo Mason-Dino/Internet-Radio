@@ -237,3 +237,22 @@ This code will go to the list url end point and it will get the list of songs we
     })
 </script>
 ```
+
+There is one last part of javascript that we will need to add to keep the streaming seamless. 
+
+The code below will run whenever the audio player has ended and it will start to run the next song and increase the index variable to make sure that it keeps changing the song. 
+
+```html
+<script>
+    audio.addEventListener("ended", function() {
+        audio.src = "/song/" + songs[index % songs.length];
+        audio.load();
+        audio.play();
+        index ++;
+    })
+</script>
+```
+
+Now that all the code is done we are going to make sure that this works. 
+
+With this you can expand it even more to make it more and more like a radio segment. You could add some html to allow you to customize the order of songs. 
