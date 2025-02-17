@@ -124,3 +124,24 @@ Let check to make sure that this code all works
 
 head to: `http://raspberrypi-ip:5000/list`<br>
 return: `mp3 files you have in music directory`
+
+We are going to add one more url endpoint and then we are going to be all done with adding url endpoints. 
+
+this code segment first gets the song from the song url end point and then it goes to the generate function which gets the whole song directory to have the entire directory. It then reads the song in binary mode to get the correct data. it then assigns part of the file in the data variable and then returns some of the mp3 data and counties to do that until it reaches the end of the song. 
+
+```py
+#put this code right under the list function
+
+def generate(song):
+    song = os.path.join(MUSIC, song)
+    print(song)
+    with open(song, "rb") as f:
+        data = f.read()
+        while data:
+            yield data
+            data = f.read()
+
+@app.route("/song/<song>")
+def song(song):
+    return Response(generate(song), mimetype="audio/mpeg")
+```
