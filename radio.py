@@ -14,6 +14,10 @@ for file in os.listdir(MUSIC):
 def index():
     return "Hello, World!"
 
+@app.route("/list")
+def list():
+    return playlist
+
 def generate(song):
     song = os.path.join(MUSIC, song)
     print(song)
