@@ -19,5 +19,18 @@ We will be using flask as the back end to serve as our little internet server, a
 `Make sure that you are in the main directory or desktop directory`
 
 ```sh
+mkdir music
+```
+
+```sh
 nano radio.py
+```
+
+```py
+from flask import Flask, Response, render_template
+import os
+
+app = Flask(__name__)
+MUSIC = "/home/dsu/Desktop/music"
+playlist = []
 ```
