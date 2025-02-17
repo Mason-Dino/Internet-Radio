@@ -16,6 +16,14 @@
                 songs = data;
                 console.log(songs); // Now you can use songs here
             });
+
+            audio.addEventListener("ended", function() {
+                audio.src = "/song/" + songs[index % songs.length];
+                audio.load();
+                audio.play();
+                index ++;
+            })
+            
         </script>
     </body>
 </html>
