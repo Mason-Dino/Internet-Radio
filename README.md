@@ -184,3 +184,56 @@ This code creates a audio player within the html page with a source to `song.mp3
     <source src="/song/song.mp3" type="audio/mpeg">
 </audio>
 ```
+
+Now we need to go back to `radio.py`
+
+```sh
+cd ..
+nano radio.py
+```
+
+We are going to need to edit the index function to render a html template or otherwise the index.html file will not be displayed
+
+```py
+@app.route("/")
+def index():
+    return render_template("index.html")
+```
+
+run `radio.py`
+
+Head to `http://raspberrypi-ip:5000/` <br>
+Results: `should start playing the track but muted`
+
+With what we have right now it will only ever play one track and we want it to play forever so we have to add some more html
+
+```sh
+cd template
+nano index.html
+```
+
+In the body tag again we will add some. we are going to add a `<script>` tag and that will run javascript within the browser. 
+
+This code will get the audio player and just inilizing variables
+
+```html
+<script>
+    var audio = document.getElementById("audioPlayer");
+    var songs = [];
+    var index = 0;
+</script>
+```
+
+That code doesn't do anything for use so we need to add some more
+
+This code will go to the list url end point and it will get the list of songs we have in the music directory 
+
+```html
+<!-- This code will be under the specific code we just added-->
+<script>
+    fetch("http://raspberrypi-ip:5000/list").then(response => response.json()).then(data => {
+        songs = data;
+        console.log(songs);
+    })
+</script>
+```
