@@ -11,3 +11,13 @@ Make sure that python flask is installed on the device.
 sudo apt install python3-flask
 ```
 
+## Code Environment
+
+`Make sure that you are in the main directory or desktop directory
+`
+
+We will be using flask as the back end to serve as our little internet server, and then html and js will help with out front end. 
+
+```sh
+nano radio.py
+```
