@@ -168,7 +168,19 @@ We need to get the basic html file outline put out
 
     </head>
     <body>
-        
+
     </body>
 </html>
+```
+
+Now that we have the basic html structure we need to actually start adding elements within the html code
+
+Within the body tag add the following html code
+
+This code creates a audio player within the html page with a source to `song.mp3 (replace this with an actual mp3 file)`
+
+```html
+<audio controls autoplay muted id="audioPlayer">
+    <source src="/song/song.mp3" type="audio/mpeg">
+</audio>
 ```
