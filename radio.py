@@ -15,7 +15,7 @@ def index():
 
 @app.route("/list")
 def list():
-    return playlist
+    return {0: playlist}
 
 def generate(song):
     song = os.path.join(MUSIC, song)

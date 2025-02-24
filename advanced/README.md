@@ -92,7 +92,7 @@ This code segment will make another url endpoint and will return the songs we ha
 
 @app.route("/list")
 def songList():
-    return playlist
+    return {0: playlist}
 ```
 
 You `radio.py` file should look like the following
@@ -115,7 +115,7 @@ def index():
 
 @app.route("/list")
 def list():
-    return playlist
+    return {0: playlist}
 
 if __name__ == "__main__":
     app.run(port=5000, debug=True)
