@@ -26,7 +26,7 @@
 		<button id="skip" onclick="skipSong()">Skip</button>
 		<script>
 			var audio = document.getElementById("audioPlayer");
-			var sogns = [];
+			var songs = [];
 			var index = 0;
 
 			fetch("http://138.247.189.213:5000/list").then(response => response.json()).then(data => {
