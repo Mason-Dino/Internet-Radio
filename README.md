@@ -233,7 +233,7 @@ This code will go to the list url end point and it will get the list of songs we
 <!-- This code will be under the specific code we just added-->
 <script>
     fetch("http://raspberrypi-ip:5000/list").then(response => response.json()).then(data => {
-        songs = data;
+        songs = data[0];
         console.log(songs);
     })
 </script>
