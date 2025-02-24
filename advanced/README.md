@@ -69,3 +69,52 @@ function songChange() {
 	console.log(songs);
 }
 ```
+
+### Pause Player
+This code bellow will pause the music.
+
+This code makes a button on the html page displaying `Pause`, and it calls the `pauseSong` function on click and grabs the audio player from before and pauses it with a built in function. 
+
+```html
+<button id="pause" onclick="pauseSong()">Pause</button>
+```
+
+```js
+function pauseSong() {
+	audio.pause();
+}
+```
+
+### Play Player
+
+Now that if we have a pause player we need a play player so that what this will do. 
+
+This code makes a button on the html page displaying `Play`, and it calls the `playSong` function on click and grabs the audio player from before and plays it with a built in function. 
+
+```html
+<button id="play" onclick="playSong()">Play</button>
+```
+
+```js
+function playSong() {
+	audio.play();
+}
+```
+
+### Skip Song
+Maybe there is a song on your internet radio that you don't want anymore well you can skip it. 
+
+This code makes a button on the html page displaying `Skip`, and it calls the `skipSong` function on click and has the same function after a song ends. So it changes the source of the audio to the next audio file and then loads the audio and plays it. 
+
+```html
+<button id="skip" onclick="skipSong()">Skip</button>
+```
+
+```js
+function skipSong() {
+	audio.src = "/song/" + songs[index % songs.length];
+	audio.load();
+	audio.play();
+	index++
+}
+```
