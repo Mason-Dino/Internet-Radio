@@ -257,3 +257,7 @@ The code below will run whenever the audio player has ended and it will start to
 Now that all the code is done we are going to make sure that this works. 
 
 With this you can expand it even more to make it more and more like a radio segment. You could add some html to allow you to customize the order of songs. 
+
+## Advanced
+
+Are you ready for the next steps! go to this [link!](https://github.com/Mason-Dino/Internet-Radio/tree/main/advanced)
