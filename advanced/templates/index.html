@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>DSU AUDIO STREAM</title>
+		<style>
+			h1 {
+				color: blue;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>Hello World</h1>
+		<audio controls autoplay muted id="audioPlayer">
+			<source src="/song/moo.mp3" type="audio/mpeg">
+		</audio>
+		<br>
+		<label for="songChoice">Song Choice:</label>
+		<input type="text" id="songChoice" name="songChoice">
+		<p>Options:</p>
+		<ul id="songOptions">
+		</ul>
+		<button id="submit" onclick="songChange()">Submit</button>
+		<br>
+		<button id="pause" onclick="pauseSong()">Pause</button>
+		<button id="play" onclick="playSong()">Play</button>
+		<button id="skip" onclick="skipSong()">Skip</button>
+		<script>
+			var audio = document.getElementById("audioPlayer");
+			var sogns = [];
+			var index = 0;
+
+			fetch("http://138.247.189.213:5000/list").then(response => response.json()).then(data => {
+				songs = data[0];
+				console.log(songs);
+
+				var options = document.getElementById("songOptions")
+				for (var i = 0; i <songs.length; i++) {
+					songDisplay = "<li>" + songs[i] + "</li>"
+					options.innerHTML += songDisplay
+				}
+			})
+
+			audio.addEventListener("ended", function() {
+				audio.src = "/song/" + songs[index % songs.length];
+				audio.load();
+				audio.play();
+				index++
+			})
+
+			function songChange() {
+				var songInput = document.getElementById("songChoice");
+
+				songs = songInput.value.split(", ")
+				index = 0;
+				console.log(songs);
+			}
+
+			function pauseSong() {
+				audio.pause();
+			}
+
+			function playSong() {
+				audio.play();
+			}
+
+			function skipSong() {
+				audio.src = "/song/" + songs[index % songs.length];
+				audio.load();
+				audio.play();
+				index++
+			}
+
+			
+		</script>
+	</body>
+</html>
